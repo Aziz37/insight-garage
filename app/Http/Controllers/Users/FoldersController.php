@@ -17,16 +17,6 @@ class FoldersController extends Controller
         $this->middleware('auth');
     }
 
-	public function index()
-    {
-    	$folders = Folder::where('id', '>', 1)
-                         ->where('parent_id', '=', 0)
-                         ->orderBy('name')
-                         ->paginate(10);
-    	
-    	return view('users.folders.index', compact('folders'));
-    }
-
     public function show($id)
     {
         $folder = Folder::findOrFail($id);
@@ -34,5 +24,27 @@ class FoldersController extends Controller
         $subfolders = Folder::where('parent_id', '=', $id)->get();
     
     	return view('users.folders.show', compact('folder', 'subfolders'));
+    }
+
+    public function insight()
+    {
+        $folders = Folder::where('parent_id', '=', 1)
+                         ->orderBy('name')
+                         ->paginate(10);
+
+        $parent = Folder::findOrFail(1);
+
+        return view('users.folders.index', compact('folders', 'parent'));
+    }
+
+    public function innovation()
+    {
+        $folders = Folder::where('parent_id', '=', 2)
+                         ->orderBy('name')
+                         ->paginate(10);
+
+        $parent = Folder::findOrFail(2);
+
+        return view('users.folders.index', compact('folders', 'parent'));
     }
 }

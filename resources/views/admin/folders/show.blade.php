@@ -22,12 +22,14 @@
                     
                     <div class="card-header">
                         <h3 class="title">
-                        	@if ($folder->parent_id != 0)
-								<a href="/admin/folders/{{$folder->parent_id}}"><i class="fas fa-arrow-left"></i></a>
-							@else
-								<a href="/admin/folders"><i class="fas fa-arrow-left"></i></a>
+                        	@if ($folder->parent_id > 2)
+								<a href="/admin/folders/{{$folder->parent_id}}">
+							@elseif ($folder->parent_id == 1)
+								<a href="/admin/insight-vault">
+							@elseif($folder->parent_id == 2)
+								<a href="/admin/innovation-toolkit">
 							@endif
-                        	{{ $folder->name }}
+                        	<i class="fas fa-arrow-left"></i> {{ $folder->name }}</a>
                         </h3>
                     </div>
                     
@@ -49,6 +51,10 @@
 										<label for="name">Folder Name: </label>
 										<input type="text" class="form-control" name="name">
 									</div>
+									<div class="form-group">
+										<label for="name">Folder Description:</label>
+	    								<input type="text" class="form-control" name="description" value="{{ $folder->description }}">
+	    							</div>
 									<input type="hidden" name="parent_id" value="{{ $folder->id }}">
 									<button type="submit" class="btn btn-primary btn-round">Create</button>
 								</form>
@@ -70,6 +76,7 @@
 							<thead>
 								<tr>
 									<th scope="col">Name</th>
+									<th scope="col">Description</th>
 									<th scope="col">Created By</th>
 									<th scope="col">Created On</th>
 									<th scope="col">Last Modified On</th>
@@ -82,6 +89,7 @@
 									<th scope="row">
 										<a href="/admin/folders/{{ $subfolder->id }}"><i class="fas fa-folder"></i> {{ $subfolder->name }}</a>
 									</th>
+									<td>{{ $subfolder->description }}</td>
 									<td>{{ $subfolder->admin->name }}</td>
 									<td>{{ $subfolder->created_at->toFormattedDateString() }}</td>
 									<td>{{ $subfolder->updated_at->toFormattedDateString() }}</td>
@@ -100,11 +108,13 @@
 							@foreach($folder->files as $fileContents)
 								<tr>
 									<th scope="row">{{ $fileContents->filename }}</th>
+									<td></td>
 									@if(isset($fileContents->user->name))
 										<td>{{ $fileContents->user->name }}</td>
 									@elseif(isset($fileContents->admin->name))
 										<td>{{ $fileContents->admin->name }}</td>
 									@endif
+
 									<td>{{ $fileContents->created_at->toFormattedDateString() }}</td>
 									<td>{{ $fileContents->updated_at->toFormattedDateString() }}</td>
 									<td>

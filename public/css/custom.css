@@ -98,3 +98,24 @@ a {
 .off-canvas-sidebar .nav li.active > a, .sidebar .nav li.active > a {
   background-color: #929292;
 }
+
+.img-wrap {
+  position: relative;
+}
+
+.img-description {
+  position: absolute;
+  height: 60px;
+  font-size: x-large;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #96AFA1;
+  color: white;
+  opacity: 0.83;
+}
+
+.caret {
+  right: -5px !important;
+}

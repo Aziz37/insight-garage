@@ -19,12 +19,17 @@ class SubfoldersController extends Controller
     public function store(Request $request)
     {
         $parentId = $request->input('parent_id');
-
+        $description = '';
+        if($request->has('description'))
+        {
+            $description = $request->input('description');
+        }
     	$subfolder = new Folder;
 
     	$subfolder->admin_id	=	Auth::user()->id;
     	$subfolder->parent_id	=	$parentId;
     	$subfolder->name   		=	$request->input('name');
+        $subfolder->description =   $description;
 
     	$subfolder->save();
 
@@ -42,9 +47,17 @@ class SubfoldersController extends Controller
 
     public function update($id, Request $request)
     {
-    	Folder::where('id', '=', $id)->update([
-    		'name' => $request->input('name')
-    	]);	
+        $description = '';
+        
+        if($request->has('description'))
+        {
+            $description = $request->input('description');
+        }
+
+        Folder::where('id', '=', $id)->update([
+            'name'        => $request->input('name'),
+            'description' => $description
+        ]); 
 
         $folder = Folder::findOrFail($id);
 

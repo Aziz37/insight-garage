@@ -25,6 +25,10 @@
 	    							<label for="name">Folder Name:</label>
 	    							<input type="text" class="form-control" value="{{ $folder->name }}" name="name">
 	    						</div>
+	    						<div class="form-group">
+	    							<label for="name">Folder Description:</label>
+	    							<input type="text" class="form-control" name="description" value="{{ $folder->description }}">
+	    						</div>
 								<button type="submit" class="btn btn-primary btn-round">Edit</button>
 							</form>
 						</h5>

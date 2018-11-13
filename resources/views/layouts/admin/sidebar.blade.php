@@ -6,9 +6,24 @@
 						</a>
 					</li>
 					<li class="side">
-						<a href="/admin/folders"><i class="fas fa-database"></i>
-							<p>Database Management</p>
-						</a>
+						<a data-toggle="collapse" href="#databaseManagement">
+		                    <i class="fas fa-database"></i>
+		                    <p>Database Management <b class="caret"></b></p>
+		                </a>
+		                <div class="collapse" id="databaseManagement">
+		                    <ul class="nav">
+		                    	<li class="side">
+		                    		<a href="/admin/folders/create"><span class="sidebar-normal"><i class="fas fa-folder"></i>Create New Folder</span></a>
+		                    	</li>
+		                        <li class="side">
+		                            <a href="/admin/insight-vault"><span class="sidebar-normal"><i class="fas fa-folder-open"></i>&nbsp&nbspInsight Vault</span></a>
+	                          	</li>
+		                        <li class="side">
+		                            <a href="/admin/innovation-toolkit"><span class="sidebar-normal"><i class="fas fa-folder-open"></i>&nbsp&nbspInnovation Toolkit</span></a>
+		                        </li>
+		                    </ul>
+		                </div>
+						
 					</li>
 					<li class="side">
 		                <a data-toggle="collapse" href="#userManagement">

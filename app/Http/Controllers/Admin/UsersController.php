@@ -59,14 +59,29 @@ class UsersController extends Controller
 
     public function update($id, Request $request)
     {
+        if($request->has('password'))
+        {
+            $this->validate($request, [
+                'password' => 'required|string|min:6|confirmed'
+            ]);
+
+            User::where('id', '=', $id)->update([
+                'password' => Hash::make($request->input('password'))
+            ]);
+
+            session()->flash('message', 'Password Changed Successfully !');
+
+            return redirect('/admin/users');
+        }
+
         $this->validate($request, [
             'user_type' =>  'required',
-            'password'  =>  'required|string|min:6|confirmed',
+            'email'     =>  'required'
         ]);
         
         User::where('id', $id)->update([
             'user_type' =>  $request->input('user_type'),
-            'password'  =>  Hash::make($request->input('password'))
+            'email'     =>  $request->input('email')
         ]);
 
         session()->flash('message', 'User Details Changed Successfully !');

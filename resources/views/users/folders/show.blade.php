@@ -21,12 +21,14 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="title">
-                        	@if ($folder->parent_id != 0)
-								<a href="/users/folders/{{$folder->parent_id}}"><i class="fas fa-arrow-left"></i></a>
-							@else
-								<a href="/users/folders"><i class="fas fa-arrow-left"></i></a>
+                        	@if ($folder->parent_id > 2)
+								<a href="/users/folders/{{$folder->parent_id}}">
+							@elseif ($folder->parent_id == 1)
+								<a href="/users/insight-vault">
+							@elseif($folder->parent_id == 2)
+								<a href="/users/innovation-toolkit">
 							@endif
-                        	{{ $folder->name }}
+                        	<i class="fas fa-arrow-left"></i></a> {{ $folder->name }}
                         </h3>
                     </div>
                     

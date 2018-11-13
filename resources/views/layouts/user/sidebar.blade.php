@@ -6,7 +6,7 @@
 						</a>
 					</li>
 					<li class="side">
-						<a href="/users/folders"><i class="fas fa-folder-open"></i>
+						<a href="/users/explore"><i class="fas fa-folder-open"></i>
 							<p>Start Exploring</p>
 						</a>
 					</li>

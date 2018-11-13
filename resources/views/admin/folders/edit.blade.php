@@ -11,8 +11,14 @@
                     
                     <div class="card-header">
                         <h3 class="title">
-                        	<a href="/admin/folders"><i class="fas fa-arrow-left"></i></a>
-                        	Edit Folder Details
+                        	@if ($folder->parent_id > 2)
+								<a href="/admin/folders/{{$folder->parent_id}}">
+							@elseif ($folder->parent_id == 1)
+								<a href="/admin/insight-vault">
+							@elseif($folder->parent_id == 2)
+								<a href="/admin/innovation-toolkit">
+							@endif
+                        	<i class="fas fa-arrow-left"></i> Edit Folder Details</a>
                         </h3>
                     </div>
                     
@@ -24,6 +30,8 @@
 								<div class="form-group">
 	    							<label for="name">Folder Name:</label>
 	    							<input type="text" class="form-control" name="name" value="{{ $folder->name }}">
+	    							<label for="name">Folder Description:</label>
+	    							<input type="text" class="form-control" name="description" value="{{ $folder->description }}">
 	    						</div>
 								<button type="submit" class="btn btn-primary btn-round">Edit</button>
 							</form>

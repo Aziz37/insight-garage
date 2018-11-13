@@ -36,7 +36,7 @@
 	<!-- End Google Tag Manager (noscript) -->
 
 	<div class="wrapper ">
-		<div class="sidebar" data-color="red">
+		<div class="sidebar" data-color="white">
 			<div class="logo">
 				<a href="#" class="simple-text logo-mini"><strong>IG</strong></a>
 				<a href="#" class="simple-text logo-normal"><strong>Insight Garage 1.0</strong></a>
