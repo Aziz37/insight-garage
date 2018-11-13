@@ -31,6 +31,8 @@ class FilesController extends Controller
             ]);
         }
 
+        session()->flash('message', 'File Uploaded Successfully !');
+
         return redirect()->action('Admin\FoldersController@show', compact('folderId'));
     }
 
@@ -49,6 +51,8 @@ class FilesController extends Controller
     	Storage::delete($file->path);
     	$file->delete();
 
+        session()->flash('message', 'File Deleted Successfully !');
+        
     	return redirect()->action('Admin\FoldersController@show', compact('folderId'));
     }
 }

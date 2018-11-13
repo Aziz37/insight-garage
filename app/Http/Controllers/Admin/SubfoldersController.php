@@ -28,6 +28,8 @@ class SubfoldersController extends Controller
 
     	$subfolder->save();
 
+        session()->flash('message', 'Folder Created Successfully !');
+
     	return redirect()->action('Admin\FoldersController@show', compact('parentId'));
     }
 
@@ -46,9 +48,9 @@ class SubfoldersController extends Controller
 
         $folder = Folder::findOrFail($id);
 
-        $folder->name = $request->input('name');
-
         $parentId = $folder->parent_id;
+
+        session()->flash('message', 'Folder Name Changed Successfully !');
 
     	return redirect()->action('Admin\FoldersController@show', compact('parentId'));
     }
@@ -60,6 +62,8 @@ class SubfoldersController extends Controller
         $folder->delete();
 
         $parentId = $folder->parent_id;
+
+        session()->flash('message', 'Folder Deleted Successfully !');
 
         return redirect()->action('Admin\FoldersController@show', compact('parentId'));
     }

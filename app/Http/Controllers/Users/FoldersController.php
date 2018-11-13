@@ -21,7 +21,8 @@ class FoldersController extends Controller
     {
     	$folders = Folder::where('id', '>', 1)
                          ->where('parent_id', '=', 0)
-                         ->get();
+                         ->orderBy('name')
+                         ->paginate(10);
     	
     	return view('users.folders.index', compact('folders'));
     }

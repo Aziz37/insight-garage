@@ -1,32 +1,57 @@
-@extends('layouts.master')
+@extends('layouts.admin.master')
 
 @section('content')
-	<h1>Create New User</h1>
-
-	<form method="post" action="/admin/users">
-		@csrf
-
-		<label for="name">Name</label>
-		<input type="text" name="name">
-
-		<label for="user_type">User Type</label>
-		<select name="user_type">
-			<option value="" selected="selected">Choose User Type</option>
-			<option value="contributor">Contributor</option>
-			<option value="explorer">Explorer</option>
-		</select>
-
-		<label for="email">Email</label>
-		<input type="email" name="email">
-
-		<label for="password">Password</label>
-		<input type="password" name="password">
-
-		<label for="password-confirm">Confirm Password</label>
-		<input type="password" name="password_confirmation">
-
-		<button type="submit">Create user</button>
-	</form>
-
-	<a href="/admin/users">Go Back to User Index</a>
+	<div class="panel-header panel-header-sm">
+    </div>
+	
+     <div class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    
+                    <div class="card-header">
+                        <h3 class="title">
+                        	<a href="/admin/users"><i class="fas fa-arrow-left"></i></a>
+                        	Create a New User
+                        </h3>
+                    </div>
+                    
+                    <div class="card-body">
+						<h6>
+							<form method="post" action="/admin/users">
+								@csrf
+								<div class="form-group">
+									<label for="name">Name</label>
+									<input type="text" class="form-control" name="name">
+								</div>
+								<div class="form-group">
+									<label for="user_type">User Type</label>
+									<select class="form-control" name="user_type">
+										<option value="" selected="selected">Choose User Type</option>
+										<option value="contributor">Contributor</option>
+										<option value="explorer">Explorer</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="email">Email</label>
+									<input type="email" class="form-control" name="email">
+								</div>
+								<div class="form-row">
+									<div class="col">
+										<label for="password">Password</label>
+										<input type="password" class="form-control" name="password">
+									</div>
+									<div class="col">
+										<label for="password-confirm">Confirm Password</label>
+										<input type="password" class="form-control" name="password_confirmation">
+									</div>
+								</div>
+								<button type="submit" class="btn btn-primary btn-round">Create user</button>
+							</form>
+						</h6>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 @endsection

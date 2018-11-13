@@ -21,6 +21,7 @@ class FoldersController extends Controller
     {
     	$folders = Folder::where('id', '>', 1)
                          ->where('parent_id', '=', 0)
+                         ->orderBy('name')
                          ->get();
     	
     	return view('admin.folders.index', compact('folders'));
@@ -50,6 +51,8 @@ class FoldersController extends Controller
 
     	$folder->save();
 
+        session()->flash('message', 'Folder Created Successfully !');
+
     	return redirect('/admin/folders');
     }
 
@@ -75,6 +78,8 @@ class FoldersController extends Controller
     		'name' => $request->input('name')
     	]);	
 
+        session()->flash('message', 'Folder Name Changed Successfully !');
+
     	return redirect('/admin/folders');
     }
 
@@ -85,6 +90,8 @@ class FoldersController extends Controller
         $folder->delete();
         $folder->files()->delete();
         
+        session()->flash('message', 'Folder Deleted Successfully !');
+
         return redirect('/admin/folders');
     }
 

@@ -31,6 +31,8 @@ class FilesController extends Controller
             ]);
         }
 
+        session()->flash('message', 'File Uploaded Successfully!');
+
         return redirect()->action('Users\FoldersController@show', compact('folderId'));
     }
 

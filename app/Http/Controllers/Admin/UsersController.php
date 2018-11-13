@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 
@@ -44,6 +45,8 @@ class UsersController extends Controller
 
         $user->save();
 
+        session()->flash('message', 'User Created Successfully !');
+
         return redirect('/admin/users');
     }
 
@@ -66,6 +69,8 @@ class UsersController extends Controller
             'password'  =>  Hash::make($request->input('password'))
         ]);
 
+        session()->flash('message', 'User Details Changed Successfully !');
+
         return redirect('/admin/users');
     }
 
@@ -74,6 +79,8 @@ class UsersController extends Controller
         $user = User::findOrFail($id);
 
         $user->delete();
+
+        session()->flash('message', 'User Deleted Successfully !');
 
         return redirect('/admin/users');
     }

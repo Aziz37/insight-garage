@@ -1,62 +1,68 @@
-@extends('layouts.master')
+@extends('layouts.admin.master')
 
 @section('content')
-
-	<h1>All Folders</h1>
-
-	@if( count($folders)>0 )
+	<div class="panel-header panel-header-sm d-flex justify-content-center">
+		@if ($flash = session('message'))
+			<div id="alert" class="alert alert-info fade show" role="alert">
+				<strong>{{ $flash }}</strong>
+			</div>
+			<!-- <div id="alert" class="alert alert-info alert-dismissible fade show" role="alert">
+				<strong>{{ $flash }}</strong>
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div> -->
+		@endif
+    </div>
 	
-		<p>
-			<a href="/admin/folders/create">Create new folders</a>
-		</p>
-
-		<table>
-	
-			<tr>
-				<th>Name</th>
-				<th>Created By</th>
-				<th>Created On</th>
-				<th>Last Modified On</th>
-				<th></th>
-				<th></th>
-			</tr>
-	
-			@foreach($folders as $folder)
-
-				<tr>
-					<td>
-						<a href="/admin/folders/{{ $folder->id }}">{{ $folder->name }}</a>
-					</td>
-					<td>{{ $folder->admin->name }}</td>
-					<td>{{ $folder->created_at->toFormattedDateString() }}</td>
-					<td>{{ $folder->updated_at->toFormattedDateString() }}</td>
-					
-					<td>
-						
-						<a href="/admin/folders/{{ $folder->id }}/edit">Edit</a>
-
-					</td>
-					
-					<td>
-						
-						<form method="POST" action="/admin/folders/{{ $folder->id }}">
-							@method('DELETE')
-							@csrf
-							<button type="submit">Delete</button>
-						</form>
-
-					</td>
-
-				</tr>
-	
-			@endforeach
-	
-		</table>
-	
-	@else
-		<p>There are no folders yet. Create a new folder <a href="/admin/folders/create">here</a></p>
-	@endif
-
-	<a href="/admin">Go back to Dashboard</a>
-	
+     <div class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    
+                    <div class="card-header">
+                        <h3 class="title">
+                        	All Folders
+                        	<a class="btn btn-primary btn-round btn-create" href="/admin/folders/create"><i class="fas fa-plus"></i>&nbsp&nbspAdd New Folder</a>
+                        </h3>
+                    </div>
+                    
+                    <div class="card-body">
+						@if (count($folders)>0)
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th scope="col">Name</th>
+										<th scope="col">Created By</th>
+										<th scope="col">Created On</th>
+										<th scope="col">Last Modified On</th>
+										<th scope="col"></th>
+										<th scope="col"></th>
+									</tr>
+								</thead>
+							@foreach($folders as $folder)
+								<tr>
+									<th scope="row">
+										<i class="fas fa-folder"></i>&nbsp&nbsp<a href="/admin/folders/{{ $folder->id }}">{{ $folder->name }}</a>
+									</th>
+									</td>
+									<td>{{ $folder->admin->name }}</td>
+									<td>{{ $folder->created_at->toFormattedDateString() }}</td>
+									<td>{{ $folder->updated_at->toFormattedDateString() }}</td>
+									<td>						
+										<a class="btn btn-info btn-round" href="/admin/folders/{{ $folder->id }}/edit"><i class="fas fa-pencil-alt"></i>&nbsp&nbspEdit</a>
+									</td>
+									<td>
+										<form method="POST" action="/admin/folders/{{ $folder->id }}">
+											@method('DELETE')
+											@csrf
+											<button type="submit" class="btn btn-danger btn-round"><i class="fas fa-trash-alt"></i>&nbsp&nbspDelete</button>
+										</form>
+									</td>
+								</tr>
+							@endforeach
+							</table>
+						@else
+							<p class="h5">There are no folders yet.</p>
+						@endif	
 @endsection
