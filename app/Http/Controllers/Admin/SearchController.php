@@ -29,7 +29,7 @@ class SearchController extends Controller
     						->get();
 
     	$userResults = User::where('name', 'LIKE', '%'.$query.'%')
-    						->where('email', 'LIKE', '%'.$query.'%')
+    						->orWhere('email', 'LIKE', '%'.$query.'%')
     						->orderBy('name')
     						->get();
 

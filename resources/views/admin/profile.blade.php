@@ -1,4 +1,4 @@
-@extends('layouts.user.master')
+@extends('layouts.admin.master')
 
 @section('content')
 	<div class="panel-header panel-header-sm d-flex justify-content-center">
@@ -37,7 +37,7 @@
 								
 								<div class="form-group">
 									<label for="email">Email</label>
-									<input class="form-control" type="email" name="email" value="{{ $admin->email }}">
+									<input class="form-control" type="email" name="email" value="{{ $admin->email }}" required>
 								</div>
 								<button type="submit" class="btn btn-primary btn-round">Change</button>
 							</form>
@@ -61,11 +61,11 @@
 								
 								<div class="form-group">
 									<label for="password">Password </label>
-									<input type="password" class="form-control" name="password" placeholder="enter new password">
+									<input type="password" class="form-control" name="password" placeholder="enter new password" required>
 								</div>
 								<div class="form-group">
 										<label for="password-confirm">Confirm Password</label>
-										<input type="password" class="form-control" name="password_confirmation" placeholder="confirm password">
+										<input type="password" class="form-control" name="password_confirmation" placeholder="confirm password" required>
 								</div>
 								<button type="submit" class="btn btn-primary btn-round" style="float:right">Change Password</button>
 							</form>

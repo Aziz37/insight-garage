@@ -20,10 +20,16 @@ class SubfoldersController extends Controller
     {
         $parentId = $request->input('parent_id');
         $description = '';
+        
         if($request->has('description'))
         {
             $description = $request->input('description');
         }
+
+        $this->validate($request, [
+            'name' = 'required|string'
+        ]);
+
     	$subfolder = new Folder;
 
     	$subfolder->admin_id	=	Auth::user()->id;
@@ -53,6 +59,10 @@ class SubfoldersController extends Controller
         {
             $description = $request->input('description');
         }
+
+        $this->validate($request, [
+            'name' = 'required|string'
+        ]);
 
         Folder::where('id', '=', $id)->update([
             'name'        => $request->input('name'),

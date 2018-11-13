@@ -23,7 +23,7 @@
 								@csrf
 								<div class="form-group">
 	    							<label for="name">Folder Name:</label>
-	    							<input type="text" class="form-control" value="{{ $folder->name }}" name="name">
+	    							<input type="text" class="form-control" value="{{ $folder->name }}" name="name" required>
 	    						</div>
 	    						<div class="form-group">
 	    							<label for="name">Folder Description:</label>

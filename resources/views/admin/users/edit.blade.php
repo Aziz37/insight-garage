@@ -33,7 +33,7 @@
 								</div>
 								<div class="form-group">
 									<label for="email">Email</label>
-									<input class="form-control" type="email" name="email" value="{{ $user->email }}">
+									<input class="form-control" type="email" name="email" value="{{ $user->email }}" required>
 								</div>
 								<button type="submit" class="btn btn-primary btn-round">Change</button>
 							</form>

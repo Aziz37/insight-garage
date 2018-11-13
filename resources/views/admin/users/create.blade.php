@@ -22,7 +22,7 @@
 								@csrf
 								<div class="form-group">
 									<label for="name">Name</label>
-									<input type="text" class="form-control" name="name">
+									<input type="text" class="form-control" name="name" required>
 								</div>
 								<div class="form-group">
 									<label for="user_type">User Type</label>
@@ -34,16 +34,16 @@
 								</div>
 								<div class="form-group">
 									<label for="email">Email</label>
-									<input type="email" class="form-control" name="email">
+									<input type="email" class="form-control" name="email" required>
 								</div>
 								<div class="form-row">
 									<div class="col">
 										<label for="password">Password</label>
-										<input type="password" class="form-control" name="password">
+										<input type="password" class="form-control" name="password" required>
 									</div>
 									<div class="col">
 										<label for="password-confirm">Confirm Password</label>
-										<input type="password" class="form-control" name="password_confirmation">
+										<input type="password" class="form-control" name="password_confirmation" required>
 									</div>
 								</div>
 								<button type="submit" class="btn btn-primary btn-round">Create user</button>

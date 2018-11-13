@@ -41,6 +41,11 @@ class FoldersController extends Controller
             $description = $request->input('description');
         }
 
+        $this->validate($request, [
+            'folder_type' = 'required',
+            'name'        = 'required|string',
+        ]);
+
         $folder = new Folder;
 
     	$folder->admin_id		=	Auth::user()->id;
@@ -86,6 +91,10 @@ class FoldersController extends Controller
         {
             $description = $request->input('description');
         }
+
+        $this->validate($request, [
+            'name' = 'required|string',
+        ]);
 
     	Folder::where('id', '=', $id)->update([
     		'name'        => $request->input('name'),

@@ -42,7 +42,7 @@
 								<input type="hidden" name="folder_id" value="{{ $folder->id }}">
 								
 								<div class="custom-file">
-									<input type="file" class="custom-file-input" id="customFile" name="file[]" multiple>
+									<input type="file" class="custom-file-input" id="customFile" name="file[]" multiple required>
 									<label class="custom-file-label" for="customFile">Choose file</label>
 								</div>
 
