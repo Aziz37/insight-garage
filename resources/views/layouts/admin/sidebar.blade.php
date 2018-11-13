@@ -12,9 +12,6 @@
 		                </a>
 		                <div class="collapse" id="databaseManagement">
 		                    <ul class="nav">
-		                    	<li class="side">
-		                    		<a href="/admin/folders/create"><span class="sidebar-normal"><i class="fas fa-folder"></i>Create New Folder</span></a>
-		                    	</li>
 		                        <li class="side">
 		                            <a href="/admin/insight-vault"><span class="sidebar-normal"><i class="fas fa-folder-open"></i>&nbsp&nbspInsight Vault</span></a>
 	                          	</li>
