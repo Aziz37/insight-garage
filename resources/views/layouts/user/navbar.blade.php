@@ -10,7 +10,20 @@
 									<span class="navbar-toggler-bar bar3"></span>
 								</button>
 							</div>
-							<h5><a class="navbar-brand" href="#pablo"><i class="fas fa-user"></i>&nbsp&nbsp&nbsp{{ Auth::user()->name }}</a></h5>
+							<h5>
+								<i class="fas fa-user"></i>&nbsp&nbsp
+									<a data-toggle="collapse" href="#userProfile">
+					                    {{ Auth::user()->name }}&nbsp&nbsp<b class="caret"></b>
+					                </a>
+					                <div class="collapse" id="userProfile">
+					                    <ul class="nav">
+					                    	<li class="side">
+					                    		<i class="fas fa-wrench"></i>&nbsp&nbsp<a href="/users/profile/{{Auth::user()->id}}/edit"><span class="sidebar-normal">Profile Settings</span></a>
+					                    	</li>
+					                    </ul>
+					                </div>
+					            </li>
+					        </h5>
 						</div>
 						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="navbar-toggler-bar navbar-kebab"></span>

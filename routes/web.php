@@ -42,5 +42,8 @@ Route::prefix('users')->group(function () {
 	Route::post('/files/upload', 'Users\FilesController@store');
 	Route::get('/file/download/{id}', 'Users\FilesController@show');
 
+	Route::get('/profile/{id}/edit', 'Users\HomeController@edit');
+	Route::patch('/profile/{id}', 'Users\HomeController@update');
+
 	Route::get('/users/logout', 'Auth\LoginController@userLogout');
 });
