@@ -9,11 +9,11 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="title">Search Results</h3>
+                        <h3 class="title">Search Results for <em>"{{ $query }}"</em></h3>
                     </div>
 
                     <div class="card-body">
-                        @if(count($folderResults)>0 || count($fileResults)>0)
+                        @if(count($folderResults)>0 || count($fileResults)>0 || count($userResults)>0)
                             @foreach($folderResults->chunk(2) as $chunk)
                                 <div class="row">
                                     @foreach($chunk as $folderResult)
@@ -45,8 +45,24 @@
                                     @endforeach
                                 </div>
                             @endforeach
+
+                            @foreach($userResults->chunk(2) as $chunky)
+                                <div class="row">
+                                    @foreach($chunky as $userResult)
+                                        <div class="col-md-6">
+                                            <h5>
+                                                <div class="card content-card">
+                                                    <div class="card-body">
+                                                        <i class="fas fa-user"></i>&nbsp&nbsp<a href="/admin/users/{{ $userResult->id }}/edit">{{ $userResult->name }}</a>
+                                                    </div>
+                                                </div>
+                                            </h5>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endforeach
                         @else
-                            <h5>No such file or folder.</h5>
+                            <h5>Search returned no results.</h5>
                         @endif
                     </div>
                 </div>

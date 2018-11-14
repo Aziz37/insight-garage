@@ -62,7 +62,7 @@
                                 </div>
                             @endforeach
                     	@else
-                    		<h5>No such file or folder.</h5>
+                    		<h5>Search returned no results.</h5>
                     	@endif
                     </div>
                 </div>

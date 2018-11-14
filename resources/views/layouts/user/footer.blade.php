@@ -1,7 +1,7 @@
 <footer class="footer" >
 				<div class="container">
 					<nav>
-						<p>Business Innovation | Digital Division
+						<p><strong>Business Innovation | Digital Division</strong></p>
 					</nav>
 					
 					<div class="copyright" id="copyright">

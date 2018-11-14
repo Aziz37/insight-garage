@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Users;
 
+use App\Models\User;
 use App\Models\File;
 use App\Models\Folder;
 use Illuminate\Http\Request;
@@ -20,14 +21,22 @@ class SearchController extends Controller
 
     	$folderResults = Folder::where('name', 'LIKE', '%'.$query.'%')
                                 ->where('id', '>', 1)
-                                ->orderBy('name')
                                 ->get();
         
         $fileResults = File::where('filename', 'LIKE', '%'.$query.'%')
-                            ->orderBy('filename')
+                            ->get();
+
+        $userResults = User::where('name', 'LIKE', '%'.$query.'%')
+                            ->orWhere('email', 'LIKE', '%'.$query.'%')
+                            ->orWhere('department', 'LIKE', '%'.$query,'%')
                             ->get();
 
 
-        return view('users.results', compact('folderResults', 'fileResults', 'query'));
+        return view('users.results', compact(
+            'folderResults',
+            'fileResults', 
+            'userResults',
+            'query'
+        ));
     }
 }
